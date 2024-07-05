@@ -14,12 +14,11 @@ class MotherBoard:
         self.name= name
         self.cpu = cpu
         self.total_mem_slots = 4
-        self.mem_slots = mem_slots
+        self.mem_slots = mem_slots[:total_mem_slots]
     def get_config(self):
-        total_memory = len(self.mem_slots)
         config_lst = [f"Материнская плата: {self.name}",
                       f"Центральный процессор: {self.cpu.name}, {self.cpu.fr}",
-                      f"Слотов памяти: {total_memory}",
+                      f"Слотов памяти: {self.total_mem_slots}",
                       f"Память: {'; '.join([f'{self.mem_slots[i].name} - {self.mem_slots[i].volume}' for i in range(len(self.mem_slots))])}"]
 
         return config_lst
